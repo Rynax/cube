@@ -1,0 +1,65 @@
+{
+	"groups": [
+		{
+			"keys": "bg_jpg,description_json,03_png,01_png,cloud_2_png,cloud_0_png,guang_png,cube_font_png,cube_font_fnt,button_down_png,button_up_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/bg.jpg",
+			"type": "image",
+			"name": "bg_jpg"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "03_png",
+			"type": "image",
+			"url": "assets/03.png"
+		},
+		{
+			"name": "01_png",
+			"type": "image",
+			"url": "assets/01.png"
+		},
+		{
+			"name": "cloud_2_png",
+			"type": "image",
+			"url": "assets/cloud_2.png"
+		},
+		{
+			"name": "cloud_0_png",
+			"type": "image",
+			"url": "assets/cloud_0.png"
+		},
+		{
+			"name": "guang_png",
+			"type": "image",
+			"url": "assets/guang.png"
+		},
+		{
+			"name": "cube_font_png",
+			"type": "image",
+			"url": "assets/cube_font.png"
+		},
+		{
+			"name": "cube_font_fnt",
+			"type": "font",
+			"url": "assets/cube_font.fnt"
+		},
+		{
+			"name": "button_down_png",
+			"type": "image",
+			"url": "assets/Button/button_down.png"
+		},
+		{
+			"name": "button_up_png",
+			"type": "image",
+			"url": "assets/Button/button_up.png"
+		}
+	]
+}

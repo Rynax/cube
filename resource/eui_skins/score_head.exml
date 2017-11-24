@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="scoreheadSkin" width="460" height="30" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" states="head" >
+	<e:BitmapLabel id="rank" width="227" height="70" font="cube_font_fnt" text="RANK" textAlign="center" left="0" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0"/>
+	<e:BitmapLabel width="455" height="70" font="cube_font_fnt" text="NAME" textAlign="center" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" includeIn="head" left="75" verticalCenter="0"/>
+	<e:BitmapLabel id="level" width="242" height="70" font="cube_font_fnt" text="LEVEL" textAlign="center" left="225" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0" left.head="225" verticalCenter.head="0"/>
+	<e:BitmapLabel id="score" width="470" height="70" font="cube_font_fnt" text="SCORE" textAlign="center" left="305" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="0" left.head="305" verticalCenter.head="0"/>
+</e:Skin>

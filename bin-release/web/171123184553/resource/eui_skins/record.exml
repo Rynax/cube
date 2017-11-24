@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="recordSkin" width="460" height="70" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect id="border" width="100%" height="100%" fillAlpha="0" left="0" strokeWeight="3" strokeAlpha="0.9" ellipseWidth="15" ellipseHeight="15" top="0" strokeColor="0xdd0808"/>
+	<e:BitmapLabel id="rank" width="227" height="70" font="cube_font_fnt" textAlign="center" left="0" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-15"/>
+	<e:TextInput id="nick" width="150" height="30" left="75" anchorOffsetX="0" textColor="0x210e00" verticalCenter="-15" prompt="昵称"/>
+	<e:BitmapLabel id="level" width="242" height="70" font="cube_font_fnt" textAlign="center" left="225" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-15"/>
+	<e:BitmapLabel id="score" width="470" height="70" font="cube_font_fnt" textAlign="center" left="305" scaleX="0.33" scaleY="0.43" anchorOffsetX="0" anchorOffsetY="0" verticalCenter="-15"/>
+	<e:TextInput id="desc" width="410" height="30" left="0" anchorOffsetX="0" textColor="0x210e00" verticalCenter="15" prompt="留言"/>
+	<e:Button id="submit" label="提交" height="30" right="3" bottom="3" anchorOffsetX="0" width="50" skinName="skins.ButtonSkin_S"/>
+</e:Skin>
