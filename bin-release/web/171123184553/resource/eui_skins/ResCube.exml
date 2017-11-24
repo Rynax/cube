@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="ResCubeSkin" width="66" height="66" currentState="yellow" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing"  states="base,red,blue,green,yellow,empty,match" >
-	<w:Config id="15fcca69b43" ></w:Config>
-	<e:Rect width="100%" height="100%" x="0" y="0" strokeWeight="1.5" fillAlpha="0.95" ellipseWidth="15" ellipseHeight="15" strokeAlpha="0.8" fillColor="0xb4b4b4" fillColor.red="0xc82850" fillColor.blue="0x2850c8" fillColor.green="0x63b252" fillColor.yellow="0xccbb45" fillColor.empty="0x000000" ellipseWidth.empty="20" ellipseHeight.empty="20" width.red="100%" height.red="100%" width.base="100%" height.base="100%" width.match="100%" height.match="100%" fillAlpha.match="0" strokeWeight.match="5" strokeColor.match="0xffffff"/>
-	<e:Image includeIn="empty" left="0" top="0" bottom="0" right="0" source="03_png"/>
-</e:Skin>
