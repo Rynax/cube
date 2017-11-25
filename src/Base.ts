@@ -14,6 +14,7 @@ module Cube {
 		public source1:eui.Group;
 		public source2:eui.Group;
 		public source3:eui.Group;
+		public count:eui.Label;
 		public top_shade:eui.Rect;
 		public top_group:eui.Group;
 		public top_bg:eui.Rect;
@@ -64,6 +65,7 @@ module Cube {
 			this.skinName = "BaseSkin";
 			this.percentWidth = 100;
 			this.percentHeight = 100;
+			this.show_count();
 			var i = 0;
 			var j = 0;
 			for(i = 0; i < 9; i++) {
@@ -107,8 +109,41 @@ module Cube {
 			this.top_button.alpha = 1;
 			this.top_button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.restart, this);
 		}
+		
+		public show_count() {
+			var request = new egret.HttpRequest();
+			request.responseType = egret.HttpResponseType.TEXT;
+			request.open("count.do", egret.HttpMethod.POST);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send();
+			request.addEventListener(egret.Event.COMPLETE, this.onCountComplete, this);
+			request.addEventListener(egret.IOErrorEvent.IO_ERROR, this.onCountIOError, this);
+			request.addEventListener(egret.ProgressEvent.PROGRESS, this.onCountProgress, this);
+		}
+
+		private onCountComplete(event:egret.Event):void {
+		    var request = <egret.HttpRequest>event.currentTarget;
+			var json = JSON.parse(request.response);
+			if(json.code != "0") {
+				this.count.text = json.desc;
+				return;
+			}
+
+			this.count.text = "共有" + json.c + "位玩家进行了游戏";
+			return;
+		}
+
+		private onCountIOError(event:egret.IOErrorEvent):void {
+			this.count.text = "连接服务器失败";
+		}
+
+		private onCountProgress(event:egret.ProgressEvent):void {
+			this.count.text = "连接服务器: " + Math.floor(100*event.bytesLoaded/event.bytesTotal) + "%";
+		}
 
 		public get_score() {
+			//this.onPostComplete(null);
+			//return;
 			var request = new egret.HttpRequest();
 			request.responseType = egret.HttpResponseType.TEXT;
 			request.open("top.do", egret.HttpMethod.POST);
@@ -130,6 +165,7 @@ module Cube {
 			}
 
 			var r:number = 0;
+			var len:number = 10;
 			if(json.data.length >= 10) {
 				var lastone = json.data[json.data.length-1].s;
 				if(this.cscore < lastone/100) {
@@ -143,10 +179,13 @@ module Cube {
 				}
 
 				r = json.data.length-1;
+				len = json.data.length-1;
 			}else {
 				r = json.data.length;
+				len = json.data.length;
 			}
 
+			
 			this.top_msg.text = "大神! 恭喜上榜! 快留个言BS一下下面那些智商欠费的渣渣!";
 			var collection = new eui.ArrayCollection();
 			this.record = new Cube.Record();
@@ -169,7 +208,7 @@ module Cube {
 			this.record.top = 110 + 70*r;
 			this.top_group.addChild(this.record);
 			collection.addItem({"rank":"","name":"","level":"","score":"","desc":""});
-			for(var i = r; i < json.data.length-1-r; i++) {
+			for(var i = r; i < len; i++) {
 				collection.addItem({"rank":(json.data[i].r+1),"name":json.data[i].n,"level":json.data[i].l,"score":json.data[i].s,"desc":json.data[i].d});
 			}
 
@@ -203,7 +242,7 @@ module Cube {
 			dp.horizontalCenter = 120;
 			dp.verticalCenter = 0;
 			dp.text = text;
-			egret.Tween.get(dp).to({scaleX:1,scaleY:1,verticalCenter:-200}, 500, egret.Ease.sineIn).to({verticalCenter:-300,alpha:0}, 500, egret.Ease.sineIn).call(this.dp_del, dp);
+			egret.Tween.get(dp).to({scaleX:1.5,scaleY:1.5,verticalCenter:-200}, 750, egret.Ease.sineIn).to({verticalCenter:-350,alpha:0}, 750, egret.Ease.sineIn).call(this.dp_del, dp);
 		}
 
 		public dp_del() {
@@ -286,7 +325,7 @@ module Cube {
 						}
 						if(this.clevel < tl) {
 							this.clevel = tl;
-							egret.Tween.get(this.level).to({text:this.clevel.toString(), scaleX:1,scaleY:1}, 50, egret.Ease.sineIn).to({scaleX:0.43,scaleY:0.43}, 300, egret.Ease.sineIn);
+							egret.Tween.get(this.level).to({text:this.clevel.toString(), scaleX:1.5,scaleY:1.5}, 50, egret.Ease.sineIn).to({scaleX:0.43,scaleY:0.43}, 700, egret.Ease.sineIn);
 						}
 						this.mult++;
 						return true;
@@ -440,7 +479,10 @@ module Cube {
 		private match_b_field(s:any) {
 			for(var i = 0; i < 9-s.size[0].y+1; i++) {
 				for(var j = 0; j < 9-s.size[0].x+1; j++) {
-					if(s.x >= this.b[i][j].localToGlobal().x && s.x <= this.b[i][j].localToGlobal().x+this.b[i][j].width && s.y >= this.b[i][j].localToGlobal().y && s.y <= this.b[i][j].localToGlobal().y+this.b[i][j].height) {
+					if(s.x+Cube.GlobalArg.bsize.x/2 >= this.b[i][j].localToGlobal().x-Cube.GlobalArg.attract && 
+					s.x+Cube.GlobalArg.bsize.x/2 <= this.b[i][j].localToGlobal().x+this.b[i][j].width+Cube.GlobalArg.attract && 
+					s.y+Cube.GlobalArg.bsize.y/2 >= this.b[i][j].localToGlobal().y-Cube.GlobalArg.attract && 
+					s.y+Cube.GlobalArg.bsize.y/2 <= this.b[i][j].localToGlobal().y+this.b[i][j].height+Cube.GlobalArg.attract) {
 						if(s.match_b_field(this.b, i, j, this.cb, 1)) {
 							s.alpha = 0;
 							return;

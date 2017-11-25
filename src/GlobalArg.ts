@@ -10,9 +10,12 @@ module Cube {
 			"match"
 		];
 
+		//吸力, 像素点
+		public static attract:number = 4;
+
 		//单格大小
 		public static bsize:egret.Point = new egret.Point(66, 66);
-		public static ssize:egret.Point = new egret.Point(40, 40);
+		public static ssize:egret.Point = new egret.Point(52, 52);
 		public static tsize:egret.Point = new egret.Point(25, 25);
 		
 		public static patsrc:egret.Point[][] = [	//[0].x=出现概率[0,x), 确保总和<=100, y未使用
@@ -45,13 +48,16 @@ module Cube {
 		];
 
 		public static pattgt:egret.Point[][] = [	//[0].x=出现概率, 确保总和<=100, [0].y基础分
-			[new egret.Point(4, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(1, 1)],
-			[new egret.Point(4, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(0, 1)],
-			[new egret.Point(4, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(1, 1)],
-			[new egret.Point(4, 50), new egret.Point(1, 0), new egret.Point(0, 1), new egret.Point(1, 1)],
-			[new egret.Point(4, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(2, 0)],
-			[new egret.Point(4, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(0, 2)],
-			[new egret.Point(2, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(1, 0), new egret.Point(1, 1)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(1, 1)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(0, 1)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(1, 1)],
+			[new egret.Point(3, 50), new egret.Point(1, 0), new egret.Point(0, 1), new egret.Point(1, 1)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(2, 0)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(0, 2)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(1, 1), new egret.Point(2, 2)],
+			[new egret.Point(3, 50), new egret.Point(2, 0), new egret.Point(1, 1), new egret.Point(0, 2)],
+			[new egret.Point(3, 50), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(1, 0), new egret.Point(1, 1)],
+			[new egret.Point(3, 100), new egret.Point(1, 0), new egret.Point(0, 1), new egret.Point(2, 1), new egret.Point(1, 2)],
 			[new egret.Point(3, 100), new egret.Point(1, 0), new egret.Point(0, 1), new egret.Point(1, 1), new egret.Point(2, 1)],
 			[new egret.Point(3, 100), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(2, 0), new egret.Point(1, 1)],
 			[new egret.Point(3, 100), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(1, 0), new egret.Point(1, 1)],
@@ -70,7 +76,7 @@ module Cube {
 			[new egret.Point(3, 100), new egret.Point(2, 0), new egret.Point(0, 1), new egret.Point(1, 1), new egret.Point(2, 1)],
 			[new egret.Point(3, 100), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(2, 0), new egret.Point(3, 0)],
 			[new egret.Point(3, 100), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(0, 2), new egret.Point(0, 3)],
-			[new egret.Point(4, 200), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(0, 2), new egret.Point(1, 0), new egret.Point(1, 1), new egret.Point(1, 2), new egret.Point(2, 0), new egret.Point(2, 1), new egret.Point(2, 2)],
+			//[new egret.Point(4, 200), new egret.Point(0, 0), new egret.Point(0, 1), new egret.Point(0, 2), new egret.Point(1, 0), new egret.Point(1, 1), new egret.Point(1, 2), new egret.Point(2, 0), new egret.Point(2, 1), new egret.Point(2, 2)],
 			[new egret.Point(4, 200), new egret.Point(1, 0), new egret.Point(0, 1), new egret.Point(1, 1), new egret.Point(2, 1), new egret.Point(1, 2)],
 			[new egret.Point(4, 200), new egret.Point(0, 0), new egret.Point(2, 0), new egret.Point(1, 1), new egret.Point(0, 2), new egret.Point(2, 2)],
 			[new egret.Point(4, 100), new egret.Point(0, 0), new egret.Point(1, 0), new egret.Point(2, 0), new egret.Point(0, 1), new egret.Point(1, 1), new egret.Point(2, 1)],

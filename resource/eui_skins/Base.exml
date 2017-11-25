@@ -40,5 +40,6 @@
 			<e:Label id="top_msg" text="" horizontalCenter="0" verticalCenter="360" height="60" size="30" width="460" textAlign="center" textColor="0x210e00" bold="true" alpha="0"/>
 			<e:Button id="top_button" label="" width="150" height="50" horizontalCenter="0" verticalCenter="450" alpha="0" skinName="skins.ButtonSkin"/>
 		</e:Group>
+		<e:Label id="count" text="" right="10" top="5" size="15" textColor="0x000000" textAlign="right" verticalAlign="middle" height="15" width="300"/>
 	</e:Group>
 </e:Skin>
